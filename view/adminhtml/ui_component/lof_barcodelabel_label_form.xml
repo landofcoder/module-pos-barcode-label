@@ -1,0 +1,281 @@
+<?xml version="1.0" ?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+	<argument name="data" xsi:type="array">
+		<item name="js_config" xsi:type="array">
+			<item name="provider" xsi:type="string">lof_barcodelabel_label_form.label_form_data_source</item>
+		</item>
+		<item name="label" translate="true" xsi:type="string">General Information</item>
+		<item name="template" xsi:type="string">templates/form/collapsible</item>
+	</argument>
+	<settings>
+		<buttons>
+			<button class="Lof\BarcodeLabel\Block\Adminhtml\Label\Edit\BackButton" name="back"/>
+			<button class="Lof\BarcodeLabel\Block\Adminhtml\Label\Edit\DeleteButton" name="delete"/>
+			<button class="Lof\BarcodeLabel\Block\Adminhtml\Label\Edit\SaveButton" name="save"/>
+			<button class="Lof\BarcodeLabel\Block\Adminhtml\Label\Edit\SaveAndContinueButton" name="save_and_continue"/>
+		</buttons>
+		<namespace>lof_barcodelabel_label_form</namespace>
+		<dataScope>data</dataScope>
+		<deps>
+			<dep>lof_barcodelabel_label_form.label_form_data_source</dep>
+		</deps>
+	</settings>
+	<dataSource name="label_form_data_source">
+		<argument name="data" xsi:type="array">
+			<item name="js_config" xsi:type="array">
+				<item name="component" xsi:type="string">Magento_Ui/js/form/provider</item>
+			</item>
+		</argument>
+		<settings>
+			<submitUrl path="*/*/save"/>
+		</settings>
+		<dataProvider class="Lof\BarcodeLabel\Model\Label\DataProvider" name="label_form_data_source">
+			<settings>
+				<requestFieldName>label_id</requestFieldName>
+				<primaryFieldName>label_id</primaryFieldName>
+			</settings>
+		</dataProvider>
+	</dataSource>
+	<fieldset name="general">
+		<settings>
+			<label>General</label>
+		</settings>
+		<field formElement="input" name="template_name" sortOrder="20">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Label</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Template Name</label>
+				<dataScope>template_name</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="select" name="format" sortOrder="1">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string"></item>
+					<item name="component" xsi:type="string">Lof_BarcodeLabel/js/form/element/options</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Select Barcode Label Format</label>
+				<dataScope>format</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+			<formElements>
+				<select>
+					<settings>
+						<options>
+							<option name="1" xsi:type="array">
+								<item name="value" xsi:type="string">standard</item>
+								<item name="label" xsi:type="string">Standard Barcode</item>
+							</option>
+							<option name="2" xsi:type="array">
+								<item name="value" xsi:type="string">a4</item>
+								<item name="label" xsi:type="string">A4 Barcode</item>
+							</option>
+							<option name="3" xsi:type="array">
+								<item name="value" xsi:type="string">jewelry</item>
+								<item name="label" xsi:type="string">Jewelry Barcode</item>
+							</option>
+						</options>
+						<caption translate="true">-- Please Select --</caption>
+					</settings>
+				</select>
+			</formElements>
+		</field>
+		<field formElement="select" name="status" sortOrder="60">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Label</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Status</label>
+				<dataScope>status</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+			<formElements>
+				<select>
+					<settings>
+						<options>
+							<option name="1" xsi:type="array">
+								<item name="value" xsi:type="string">active</item>
+								<item name="label" xsi:type="string">Active</item>
+							</option>
+							<option name="2" xsi:type="array">
+								<item name="value" xsi:type="string">inactive</item>
+								<item name="label" xsi:type="string">Inactive</item>
+							</option>
+						</options>
+						<caption translate="true">-- Please Select --</caption>
+					</settings>
+				</select>
+			</formElements>
+		</field>
+		<field name="product_attribute" sortOrder="61">
+			<argument name="data" xsi:type="array">
+				<item name="options" xsi:type="object">Lof\BarcodeLabel\Model\Config\Source\Attribute</item>
+				<item name="config" xsi:type="array">
+					<item name="label" xsi:type="string">Product Attribute</item>
+					<item name="visible" xsi:type="boolean">true</item>
+					<item name="dataType" xsi:type="string">multiselect</item>
+					<item name="formElement" xsi:type="string">multiselect</item>
+					<item name="validation" xsi:type="array">
+						<item name="required-entry" xsi:type="boolean">true</item>
+					</item>
+				</item>
+			</argument>
+		</field>
+		<field formElement="input" name="label_per_row" sortOrder="80">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Label</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Label per Row</label>
+				<dataScope>label_per_row</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+					<rule name="validate-number" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="input" name="label_width" sortOrder="90">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Label</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Label Width</label>
+				<dataScope>label_width</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+					<rule name="validate-number" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="input" name="label_height" sortOrder="100">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Label</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Label Height</label>
+				<dataScope>label_height</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+					<rule name="validate-number" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="input" name="font_size" sortOrder="150">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Label</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Font Size</label>
+				<dataScope>font_size</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+					<rule name="validate-number" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="input" name="margin_top" sortOrder="160">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Label</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Margin Top</label>
+				<dataScope>margin_top</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+					<rule name="validate-number" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="input" name="margin_bottom" sortOrder="170">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Label</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Margin Bottom</label>
+				<dataScope>margin_bottom</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+					<rule name="validate-number" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="input" name="margin_left" sortOrder="180">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Label</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Margin Left</label>
+				<dataScope>margin_left</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+					<rule name="validate-number" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field formElement="input" name="margin_right" sortOrder="190">
+			<argument name="data" xsi:type="array">
+				<item name="config" xsi:type="array">
+					<item name="source" xsi:type="string">Label</item>
+				</item>
+			</argument>
+			<settings>
+				<dataType>text</dataType>
+				<label translate="true">Margin Right</label>
+				<dataScope>margin_right</dataScope>
+				<validation>
+					<rule name="required-entry" xsi:type="boolean">true</rule>
+					<rule name="validate-number" xsi:type="boolean">true</rule>
+				</validation>
+			</settings>
+		</field>
+		<field name="preview">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">200</item>
+                    <item name="formElement" xsi:type="string">input</item>
+                    <item name="label" xsi:type="string" translate="true">Preview</item>
+                    <item name="component" xsi:type="string">Lof_BarcodeLabel/js/form/element/barcode/template/preview</item>
+                    <item name="elementTmpl" xsi:type="string">Lof_BarcodeLabel/form/element/barcode/template/preview</item>
+                </item>
+            </argument>
+        </field>
+	</fieldset>
+</form>

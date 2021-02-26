@@ -1,0 +1,30 @@
+{
+    "name": "landofcoder/module-barcodelabel",
+    "description": "POS Barcode Label for Magento 2: Using this POS add-on, the store owner can design customized barcode labels/stickers for products. Display price, product name, logo, date, product custom attribute on the barcode labels. The admin can multi-select barcode labels and preview them before printing.",
+    "type": "magento2-module",
+
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "authors": [
+        {
+            "name": "Landofcoder",
+            "email": "info@landofcoder.com"
+        }
+    ],
+    "version": "1.0.0",
+    "minimum-stability": "dev",
+    "require": {
+        "landofcoder/module-all":"1.0.*",
+        "landofcoder/module-barcodeinventory":"1.0.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lof\\BarcodeLabel\\": ""
+        },
+        "files": [
+            "registration.php"
+        ]
+    }
+}

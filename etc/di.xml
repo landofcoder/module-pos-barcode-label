@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Lof\BarcodeLabel\Api\LabelRepositoryInterface" type="Lof\BarcodeLabel\Model\LabelRepository"/>
+	<preference for="Lof\BarcodeLabel\Api\Data\LabelInterface" type="Lof\BarcodeLabel\Model\Data\Label"/>
+	<preference for="Lof\BarcodeLabel\Api\Data\LabelSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
+	<virtualType name="Lof\BarcodeLabel\Model\ResourceModel\Label\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">lof_barcodelabel_label</argument>
+			<argument name="resourceModel" xsi:type="string">Lof\BarcodeLabel\Model\ResourceModel\Label\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="lof_barcodelabel_label_listing_data_source" xsi:type="string">Lof\BarcodeLabel\Model\ResourceModel\Label\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+</config>

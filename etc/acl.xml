@@ -1,0 +1,15 @@
+<?xml version="1.0" ?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+	<acl>
+		<resources>
+			<resource id="Magento_Backend::admin">
+				<resource id="Lof_BarcodeLabel::label" sortOrder="10" title="label">
+					<resource id="Lof_BarcodeLabel::label_save" sortOrder="10" title="Save label"/>
+					<resource id="Lof_BarcodeLabel::label_delete" sortOrder="20" title="Delete label"/>
+					<resource id="Lof_BarcodeLabel::label_update" sortOrder="30" title="Update label"/>
+					<resource id="Lof_BarcodeLabel::label_view" sortOrder="40" title="View label"/>
+				</resource>
+			</resource>
+		</resources>
+	</acl>
+</config>
