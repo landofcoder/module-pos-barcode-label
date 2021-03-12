@@ -2,34 +2,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
         <section id="barcode" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
-            <label>Barcode</label>
             <tab>landofcoder</tab>
-            <resource>Lof_BarcodeInventory::config_lof_barcodeinventory</resource>
-            <group id="general" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="10" translate="label">
-                <label>General Setting</label>
-                <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Enable</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[Select <strong>Yes</strong> to enable this module.]]></comment>
-                </field>
-                <field id="attribute_barcode" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
-                    <label>Attribute for Barcode</label>
-                    <depends>
-                        <field id="enabled">1</field>
-                    </depends>
-                    <source_model>Lof\BarcodeInventory\Model\Config\Source\BarcodeAttribute</source_model>
-                    <comment><![CDATA[Attributes for generating barcode. If you don't find the attribute you want, please contact us for support.]]></comment>
-                </field>
-                <field id="generate_barcode" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
-                    <frontend_model>Lof\BarcodeInventory\Block\Adminhtml\System\Config\Generate</frontend_model>
-                    <label>Auto Generate Barcode</label>
-                    <comment><![CDATA[Click RUN to generate barcode number for products without barcode.]]></comment>
-                    <depends>
-                        <field id="attribute_barcode">product_code</field>
-                        <field id="enabled">1</field>
-                    </depends>
-                </field>
-            </group>
             <group id="design" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="20" translate="label">
                 <field id="use_label" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1">
                     <label>Use Barcode Label</label>

@@ -1,0 +1,14 @@
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<!-- ko if: $row().status === 'ACTIVE' -->
+<div class="data-grid-cell-content lofbl-status-box lofbl-status-active" text="$col.getLabel($row())"/>
+<!-- /ko -->
+
+<!-- ko if: $row().status === 'INACTIVE' -->
+<div class="data-grid-cell-content lofbl-status-box lofbl-status-inactive" text="$col.getLabel($row())"/>
+<!-- /ko -->
+
