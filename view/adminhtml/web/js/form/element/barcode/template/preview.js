@@ -42,7 +42,6 @@ define([
         useDefault: function(){
             var self = this;
             self.fillDefaultData();
-            self.previewTemplate();
         },
         fillDefaultData: function(){
             var self = this;

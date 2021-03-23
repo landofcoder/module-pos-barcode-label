@@ -1,0 +1,24 @@
+.lofbl-status-box {
+    border: 1px solid;
+    display: block;
+    font-weight: 700;
+    line-height: 17px;
+    padding: 0 3px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.lofbl-status-inactive {
+    background: rgba(255, 150, 150, 0.92);
+    border-color: #4b4b4b;
+    color: #4b4b4b;
+}
+
+.lofbl-status-active {
+    background: rgba(161, 255, 180, 0.92);
+    border-color: #24556c;
+    color: #24556c;
+}
+
+
+

@@ -66,13 +66,6 @@
 				<indexField>label_id</indexField>
 			</settings>
 		</selectionsColumn>
-		<actionsColumn class="Lof\BarcodeLabel\Ui\Component\Listing\Column\LabelActions" name="actions">
-			<settings>
-				<indexField>label_id</indexField>
-				<resizeEnabled>false</resizeEnabled>
-				<resizeDefaultWidth>107</resizeDefaultWidth>
-			</settings>
-		</actionsColumn>
 		<column name="label_id">
 			<settings>
 				<filter>text</filter>
@@ -98,18 +91,15 @@
 				</editor>
 			</settings>
 		</column>
-		<column name="status">
-			<settings>
-				<filter>text</filter>
-				<label translate="true">Status</label>
-				<editor>
-					<editorType>text</editorType>
-					<validation>
-						<rule name="required-entry" xsi:type="boolean">true</rule>
-					</validation>
-				</editor>
-			</settings>
-		</column>
+        <column name="status" class="Lof\BarcodeLabel\Ui\Component\Listing\Column\Status" sortOrder="125">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="bodyTmpl" xsi:type="string">Lof_BarcodeLabel/grid/cells/status</item>
+                    <item name="label" xsi:type="string">Status</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                </item>
+            </argument>
+        </column>
 		<column name="format">
 			<settings>
 				<filter>text</filter>
@@ -218,5 +208,12 @@
 				</editor>
 			</settings>
 		</column>
+        <actionsColumn class="Lof\BarcodeLabel\Ui\Component\Listing\Column\LabelActions" name="actions">
+            <settings>
+                <indexField>label_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>107</resizeDefaultWidth>
+            </settings>
+        </actionsColumn>
 	</columns>
 </listing>
