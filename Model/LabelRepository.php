@@ -1,17 +1,17 @@
 <?php
 /**
  * Copyright (c) 2019 Landofcoder
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -38,35 +38,62 @@ use Magento\Framework\Reflection\DataObjectProcessor;
 use Lof\BarcodeLabel\Model\ResourceModel\Label\CollectionFactory as LabelCollectionFactory;
 use Magento\Framework\Api\ExtensionAttribute\JoinProcessorInterface;
 
-/**
- * Class LabelRepository
- *
- * @package Lof\BarcodeLabel\Model
- */
 class LabelRepository implements LabelRepositoryInterface
 {
-
+    /**
+     * @var LabelSearchResultsInterfaceFactory
+     */
     protected $searchResultsFactory;
 
+    /**
+     * @var DataObjectHelper
+     */
     protected $dataObjectHelper;
 
+    /**
+     * @var DataObjectProcessor
+     */
     protected $dataObjectProcessor;
 
+    /**
+     * @var LabelCollectionFactory
+     */
     protected $labelCollectionFactory;
 
+    /**
+     * @var JoinProcessorInterface
+     */
     protected $extensionAttributesJoinProcessor;
 
+    /**
+     * @var LabelFactory
+     */
     protected $labelFactory;
 
+    /**
+     * @var CollectionProcessorInterface
+     */
     private $collectionProcessor;
 
+    /**
+     * @var ResourceLabel
+     */
     protected $resource;
 
+    /**
+     * @var StoreManagerInterface
+     */
     private $storeManager;
 
+    /**
+     * @var ExtensibleDataObjectConverter
+     */
     protected $extensibleDataObjectConverter;
-    protected $dataLabelFactory;
 
+    /**
+     * @var LabelInterfaceFactory
+     */
+    protected $dataLabelFactory;
 
     /**
      * @param ResourceLabel $resource
@@ -117,15 +144,15 @@ class LabelRepository implements LabelRepositoryInterface
             $storeId = $this->storeManager->getStore()->getId();
             $label->setStoreId($storeId);
         } */
-        
+
         $labelData = $this->extensibleDataObjectConverter->toNestedArray(
             $label,
             [],
             \Lof\BarcodeLabel\Api\Data\LabelInterface::class
         );
-        
+
         $labelModel = $this->labelFactory->create()->setData($labelData);
-        
+
         try {
             $this->resource->save($labelModel);
         } catch (\Exception $exception) {
@@ -157,22 +184,22 @@ class LabelRepository implements LabelRepositoryInterface
         \Magento\Framework\Api\SearchCriteriaInterface $criteria
     ) {
         $collection = $this->labelCollectionFactory->create();
-        
+
         $this->extensionAttributesJoinProcessor->process(
             $collection,
             \Lof\BarcodeLabel\Api\Data\LabelInterface::class
         );
-        
+
         $this->collectionProcessor->process($criteria, $collection);
-        
+
         $searchResults = $this->searchResultsFactory->create();
         $searchResults->setSearchCriteria($criteria);
-        
+
         $items = [];
         foreach ($collection as $model) {
             $items[] = $model->getDataModel();
         }
-        
+
         $searchResults->setItems($items);
         $searchResults->setTotalCount($collection->getSize());
         return $searchResults;
@@ -205,4 +232,3 @@ class LabelRepository implements LabelRepositoryInterface
         return $this->delete($this->get($labelId));
     }
 }
-

@@ -1,11 +1,7 @@
 <?php
+
 namespace Lof\BarcodeLabel\Ui\Component\Listing\Column;
 
-
-/**
- * Class Status
- * @package Lof\BarcodeLabel\Ui\Component\Listing\Column
- */
 class Status extends \Magento\Ui\Component\Listing\Columns\Column
 {
     /**
@@ -28,5 +24,4 @@ class Status extends \Magento\Ui\Component\Listing\Columns\Column
 
         return $dataSource;
     }
-
 }

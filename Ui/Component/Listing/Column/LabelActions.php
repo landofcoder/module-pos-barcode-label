@@ -1,17 +1,17 @@
 <?php
 /**
  * Copyright (c) 2019 Landofcoder
- * 
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
  * in the Software without restriction, including without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in all
  * copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -30,13 +30,17 @@ namespace Lof\BarcodeLabel\Ui\Component\Listing\Column;
  */
 class LabelActions extends \Magento\Ui\Component\Listing\Columns\Column
 {
-
-    protected $urlBuilder;
     const URL_PATH_DELETE = 'lof_barcodelabel/label/delete';
     const URL_PATH_DETAILS = 'lof_barcodelabel/label/details';
     const URL_PATH_EDIT = 'lof_barcodelabel/label/edit';
 
     /**
+     * @var \Magento\Framework\UrlInterface
+     */
+    protected $urlBuilder;
+
+    /**
+     * LabelActions constructor.
      * @param \Magento\Framework\View\Element\UiComponent\ContextInterface $context
      * @param \Magento\Framework\View\Element\UiComponentFactory $uiComponentFactory
      * @param \Magento\Framework\UrlInterface $urlBuilder
@@ -84,16 +88,15 @@ class LabelActions extends \Magento\Ui\Component\Listing\Columns\Column
                             ),
                             'label' => __('Delete'),
                             'confirm' => [
-                                'title' => __('Delete '.$item["template_name"]),
-                                'message' => __('Are you sure you wan\'t to delete a '.$item["template_name"].' record?')
+                                'title' => __('Delete ' . $item["template_name"]),
+                                'message' => __('Are you sure you wan\'t to delete a ' . $item["template_name"] . ' record?')
                             ]
                         ]
                     ];
                 }
             }
         }
-        
+
         return $dataSource;
     }
 }
-

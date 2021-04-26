@@ -25,11 +25,6 @@ namespace Lof\BarcodeLabel\Model\Config\Source;
 
 use Magento\Framework\App\Action\Context;
 
-/**
- * Class Attribute
- *
- * @package Lof\BarcodeLabel\Model\Config\Source
- */
 class Attribute implements \Magento\Framework\Option\ArrayInterface
 {
 
@@ -37,11 +32,17 @@ class Attribute implements \Magento\Framework\Option\ArrayInterface
      * @var Context
      */
     private $context;
+
     /**
      * @var \Magento\Catalog\Model\ResourceModel\Eav\Attribute
      */
     private $_attributeFactory;
 
+    /**
+     * Attribute constructor.
+     * @param Context $context
+     * @param \Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory $attributeFactory
+     */
     public function __construct(
         Context $context,
         \Magento\Catalog\Model\ResourceModel\Product\Attribute\CollectionFactory $attributeFactory
@@ -49,6 +50,10 @@ class Attribute implements \Magento\Framework\Option\ArrayInterface
         $this->context = $context;
         $this->_attributeFactory = $attributeFactory;
     }
+
+    /**
+     * @return array
+     */
     public function toOptionArray()
     {
         $options = [];
@@ -59,6 +64,7 @@ class Attribute implements \Magento\Framework\Option\ArrayInterface
                 'value' => $item->getAttributeCode(),
             ];
         }
+
         return $options;
     }
 }
