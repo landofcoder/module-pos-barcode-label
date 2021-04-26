@@ -1,4 +1,23 @@
 <?php
+/**
+ * Landofcoder
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Landofcoder.com license that is
+ * available through the world-wide-web at this URL:
+ * https://landofcoder.com/terms
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category   Landofcoder
+ * @package    Lof_BarcodeLabel
+ * @copyright  Copyright (c) 2021 Landofcoder (https://www.landofcoder.com/)
+ * @license    https://landofcoder.com/terms
+ */
 
 namespace Lof\BarcodeLabel\Controller\Label;
 
@@ -13,11 +32,20 @@ class GenerateLabel extends \Magento\Framework\App\Action\Action
      * @var Data
      */
     private $_helper;
+
     /**
      * @var UrlInterface
      */
     private $urlBuilder;
 
+    /**
+     * GenerateLabel constructor.
+     * @param \Magento\Framework\App\Action\Context $context
+     * @param \Magento\Framework\Json\Helper\Data $jsonHelper
+     * @param Data $helper
+     * @param UrlInterface $urlBuilder
+     * @param \Magento\Framework\View\Result\PageFactory $resultFactory
+     */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
         \Magento\Framework\Json\Helper\Data $jsonHelper,
@@ -32,6 +60,9 @@ class GenerateLabel extends \Magento\Framework\App\Action\Action
         parent::__construct($context);
     }
 
+    /**
+     * @return \Magento\Framework\App\ResponseInterface|\Magento\Framework\Controller\Result\Raw|\Magento\Framework\Controller\ResultInterface
+     */
     public function execute()
     {
         /** @var \Magento\Framework\View\Result\Page $resultPage */
@@ -48,13 +79,16 @@ class GenerateLabel extends \Magento\Framework\App\Action\Action
             $height = $this->_helper->getDesignConfig('logo_height');
             $url = str_replace("/index.php/", "/", $this->urlBuilder->getBaseUrl());
             $logo = $this->_helper->getDesignConfig('logo');
-            $str .= "<div class = 'row'><img width='$width' height='$height' src='".$url."media/lof/barcode_logo/".$logo."' alt='logo'></div>";
+            $str .= "<div class = 'row'><img width='$width' height='$height' src='" . $url . "media/lof/barcode_logo/" . $logo . "' alt='logo'></div>";
         }
         $str .= "<div class = 'row'><b>Joust Duffle Bag</b></div>";
-        $str .= '<img width = "100%" src="data:image/png;base64,' . base64_encode($generator->getBarcode('12345678', $generator::TYPE_CODE_128)) . '">';
+        $str .= '<img width = "100%" src="data:image/png;base64,' . base64_encode($generator->getBarcode(
+            '12345678',
+            $generator::TYPE_CODE_128
+        )) . '">';
         $str .= "<div class = 'row'><b>12345678</b></div>";
         $str .= "<div class = 'row'><b>$34.00</b></div>";
-        $attributes =  $data['product_attribute'];
+        $attributes = $data['product_attribute'];
         foreach ($attributes as $item) {
             $str .= "<div class = 'row'><b>$item</b></div>";
         }
@@ -67,7 +101,7 @@ class GenerateLabel extends \Magento\Framework\App\Action\Action
         $width = $data['label_width'];
         $height = $data['label_height'];
         $font = $data['font_size'];
-        $margin = $data['margin_top']." ".$data['margin_right']." ".$data['margin_bottom']." ".$data['margin_left'];
+        $margin = $data['margin_top'] . " " . $data['margin_right'] . " " . $data['margin_bottom'] . " " . $data['margin_left'];
         $css = "$css .barcode_paper {width:$width; height: $height; margin: $margin; font-size: $font; float:left }";
         $string .= "<style type='text/css'>$css</style>";
         $response->setContents(
@@ -77,6 +111,7 @@ class GenerateLabel extends \Magento\Framework\App\Action\Action
                 ]
             )
         );
+
         return $response;
     }
 }
