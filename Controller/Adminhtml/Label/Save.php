@@ -29,6 +29,11 @@ use Magento\Framework\Exception\LocalizedException;
 class Save extends \Magento\Backend\App\Action
 {
     /**
+     * Authorization level of a basic admin session
+     */
+    const ADMIN_RESOURCE = 'Lof_BarcodeLabel::save';
+
+    /**
      * @var DataPersistorInterface
      */
     protected $dataPersistor;

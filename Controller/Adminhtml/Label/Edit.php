@@ -24,6 +24,11 @@ namespace Lof\BarcodeLabel\Controller\Adminhtml\Label;
 class Edit extends \Lof\BarcodeLabel\Controller\Adminhtml\Label
 {
     /**
+     * Authorization level of a basic admin session
+     */
+    const ADMIN_RESOURCE = 'Lof_BarcodeLabel::update';
+
+    /**
      * @var \Magento\Framework\View\Result\PageFactory
      */
     protected $resultPageFactory;

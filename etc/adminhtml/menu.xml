@@ -21,6 +21,6 @@
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
 	<menu>
-		<add id="Lof_BarcodeLabel::lof_barcode_label" module="Lof_BarcodeLabel" parent="Lof_Barcode::lof_barcode" resource="Magento_Backend::content" sortOrder="10" title="Barcode Label" action="lof_barcodelabel/label/index" />
+		<add id="Lof_BarcodeLabel::lof_barcode_label" module="Lof_BarcodeLabel" parent="Lof_Barcode::lof_barcode" resource="Lof_BarcodeLabel::label" sortOrder="10" title="Manage Barcode Labels" action="lof_barcodelabel/label/index" />
 	</menu>
 </config>

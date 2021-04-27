@@ -24,6 +24,11 @@ namespace Lof\BarcodeLabel\Controller\Adminhtml\Label;
 class InlineEdit extends \Magento\Backend\App\Action
 {
     /**
+     * Authorization level of a basic admin session
+     */
+    const ADMIN_RESOURCE = 'Lof_BarcodeLabel::save';
+
+    /**
      * @var \Magento\Framework\Controller\Result\JsonFactory
      */
     protected $jsonFactory;

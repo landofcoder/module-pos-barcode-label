@@ -23,6 +23,10 @@ namespace Lof\BarcodeLabel\Controller\Adminhtml\Label;
 
 class Delete extends \Lof\BarcodeLabel\Controller\Adminhtml\Label
 {
+    /**
+     * Authorization level of a basic admin session
+     */
+    const ADMIN_RESOURCE = 'Lof_BarcodeLabel::delete';
 
     /**
      * Delete action

@@ -24,6 +24,11 @@ namespace Lof\BarcodeLabel\Controller\Adminhtml\Label;
 class NewAction extends \Lof\BarcodeLabel\Controller\Adminhtml\Label
 {
     /**
+     * Authorization level of a basic admin session
+     */
+    const ADMIN_RESOURCE = 'Lof_BarcodeLabel::save';
+
+    /**
      * @var \Magento\Backend\Model\View\Result\ForwardFactory
      */
     protected $resultForwardFactory;

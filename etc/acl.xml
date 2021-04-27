@@ -23,11 +23,11 @@
 	<acl>
 		<resources>
 			<resource id="Magento_Backend::admin">
-				<resource id="Lof_BarcodeLabel::label" sortOrder="10" title="label">
-					<resource id="Lof_BarcodeLabel::label_save" sortOrder="10" title="Save label"/>
-					<resource id="Lof_BarcodeLabel::label_delete" sortOrder="20" title="Delete label"/>
-					<resource id="Lof_BarcodeLabel::label_update" sortOrder="30" title="Update label"/>
-					<resource id="Lof_BarcodeLabel::label_view" sortOrder="40" title="View label"/>
+				<resource id="Lof_BarcodeLabel::label" sortOrder="10" title="Lof Barcode Label">
+					<resource id="Lof_BarcodeLabel::save" sortOrder="10" title="Save"/>
+					<resource id="Lof_BarcodeLabel::delete" sortOrder="20" title="Delete"/>
+					<resource id="Lof_BarcodeLabel::update" sortOrder="30" title="Update"/>
+					<resource id="Lof_BarcodeLabel::view" sortOrder="40" title="View"/>
 				</resource>
 			</resource>
 		</resources>
