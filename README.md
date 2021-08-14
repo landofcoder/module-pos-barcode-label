@@ -1,6 +1,6 @@
 # Magento 2 Module Lof BarcodeLabel
 
-    ``landofcoder/module-pos-barcode-label``
+    ``landofcoder/module-barcodelabel``
 
  - [Main Functionalities](#markdown-header-main-functionalities)
  - [Installation](#markdown-header-installation)
@@ -11,21 +11,19 @@ POS Barcode Label for Magento 2: Using this POS add-on, the store owner can desi
 ## Installation
 \* = in production please use the `--keep-generated` option
 
-### Type 1: Zip file
 
- - Unzip the zip file in `app/code/Lof`
- - Enable the module by running `php bin/magento module:enable Lof_BarcodeLabel`
- - Apply database updates by running `php bin/magento setup:upgrade`\*
+### Type 1: Composer (Recommended)
+
+ - Install the module composer by running `composer require landofcoder/module-barcodelabel`
+ - enable the module by running `php bin/magento module:enable Lof_BarcodeLabel Lof_BarcodeInventory`
+ - apply database updates by running `php bin/magento setup:upgrade`\*
+ - Generate static files by running `php bin/magento setup:static-content:deploy -f`
  - Flush the cache by running `php bin/magento cache:flush`
 
-### Type 2: Composer
+### Type 2: Zip file
 
- - Make the module available in a composer repository for example:
-    - private repository `repo.magento.com`
-    - public repository `packagist.org`
-    - public github repository as vcs
- - Add the composer repository to the configuration by running `composer config repositories.repo.magento.com composer https://repo.magento.com/`
- - Install the module composer by running `composer require landofcoder/module-pos-barcode-label`
- - enable the module by running `php bin/magento module:enable Lof_BarcodeLabel`
- - apply database updates by running `php bin/magento setup:upgrade`\*
+ - Unzip the zip file in `app/code/Lof`
+ - Enable the module by running `php bin/magento module:enable Lof_BarcodeLabel Lof_BarcodeInventory`
+ - Apply database updates by running `php bin/magento setup:upgrade`\*
+ - Generate static files by running `php bin/magento setup:static-content:deploy -f`
  - Flush the cache by running `php bin/magento cache:flush`
