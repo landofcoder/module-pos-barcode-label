@@ -1,4 +1,4 @@
-# Mage2 Module Lof BarcodeLabel
+# Magento 2 Module Lof BarcodeLabel
 
     ``landofcoder/module-pos-barcode-label``
 
